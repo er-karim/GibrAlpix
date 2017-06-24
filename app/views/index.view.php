@@ -1,3 +1,5 @@
 <?php require 'partials/head.php';?>
-<h1><?php echo $content; ?></h1>
+<div class="container">
+	<div class="text-center"><h1>Hello world</h1></div>
+</div>
 <?php require 'partials/footer.php';?>

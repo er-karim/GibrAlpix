@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Core\App;
+
 /**
  *
  * @package App\Controllers
@@ -11,7 +13,7 @@ class DefaultController
 {
     public function home()
     {
-        $content = 'test';
+        $site_url = App::get('config')['site_url'];
 
         require 'app/views/index.view.php';
     }
