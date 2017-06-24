@@ -18,7 +18,7 @@ class App
      * @param  mixed $value
      * @return void
      */
-    public static function bind($key, $value)
+    public static function attachElement($key, $value)
     {
         static::$items[$key] = $value;
     }
