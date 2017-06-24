@@ -2,18 +2,16 @@
 
 namespace App\Controllers;
 
-use App\Core\App;
-
 /**
  *
  * @package App\Controllers
  * @author ERRAK Karim <errakkarim@gmail.com>
  */
-class PagesController
+class DefaultController
 {
     public function home()
     {
-        $content = "Test de form builder " . App::get('config')['site_url'];
+        $content = 'test';
 
         require 'app/views/index.view.php';
     }
