@@ -55,7 +55,7 @@ class FormBuilder implements FieldTypeInterface
      * @param array $field_options
      * @return FormBuilder
      */
-    public function addField($field_name, $field_type, $field_options)
+    public function addField($field_name, $field_type, $field_options = [])
     {
         $this->formContainer .= '<div class="form-group">';
         switch ($field_type) {
@@ -66,6 +66,9 @@ class FormBuilder implements FieldTypeInterface
                 $this->formContainer .= '<select';
                 break;
             default:
+                if ($field_type == static::CHECKBOX || $field_type == static::RADIO) {
+                    $this->formContainer .= sprintf('<div class="%s"><label>', $field_type);
+                }
                 $this->formContainer .= sprintf('<input type="%s"', $field_type);
                 break;
         }
@@ -92,6 +95,12 @@ class FormBuilder implements FieldTypeInterface
             unset($field_options['value']);
         }
 
+        $field_label = '';
+        if (array_key_exists('label', $field_options)) {
+            $field_label = $field_options['label'];
+            unset($field_options['label']);
+        }
+
         foreach ($field_options as $key => $value) {
             $this->formContainer .= sprintf(' %s="%s"', $key, $value);
         }
@@ -111,7 +120,13 @@ class FormBuilder implements FieldTypeInterface
                 $this->formContainer .= '</select>';
                 break;
             default:
-                $this->formContainer .= sprintf('value="%s">', $field_value);
+                if ($field_type == static::CHECKBOX) {
+                    $this->formContainer .= sprintf('>%s</label></div>', $field_label);
+                } elseif ($field_type == static::RADIO) {
+                    $this->formContainer .= sprintf('value="%s">%s</label></div>', $field_value, $field_label);
+                } else {
+                    $this->formContainer .= sprintf('value="%s">', $field_value);
+                }
                 break;
         }
 

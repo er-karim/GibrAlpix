@@ -2,6 +2,7 @@
 <div class="container">
 	<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 		<div class="alert alert-info">
+			<p><strong>Civilité</strong>: <?php echo $civility; ?></p>
 			<p><strong>Nom</strong>: <?php echo $firstname; ?></p>
 			<p><strong>Prénom</strong>: <?php echo $lastname; ?></p>
 			<p><strong>Email</strong>: <?php echo $email; ?></p>

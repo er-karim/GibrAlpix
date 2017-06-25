@@ -18,6 +18,14 @@ class DefaultController
 
         $form_builder = FormBuilder::getInstance();
 
+        $civility_options_1 = [
+            'label' => 'Homme',
+            'value' => 'Homme',
+        ];
+        $civility_options_2 = [
+            'label' => 'Femme',
+            'value' => 'Femme',
+        ];
         $first_name_options = [
             'class' => 'form-control',
             'id' => 'first-name',
@@ -55,15 +63,21 @@ class DefaultController
             'id' => 'submit',
             'value' => 'Envoyé',
         ];
+        $checkbox_options = [
+            'label' => 'J\'ai lu et j\'accepte les conditions générales d\'utilisation.',
+        ];
 
         $form = $form_builder
             ->open(['method' => 'post', 'action' => 'send'])
+            ->addField('civility', FormBuilder::RADIO, $civility_options_1)
+            ->addField('civility', FormBuilder::RADIO, $civility_options_2)
             ->addField('firstname', FormBuilder::TEXT, $first_name_options)
             ->addField('lastname', FormBuilder::TEXT, $last_name_options)
             ->addField('email', FormBuilder::EMAIL, $email_options)
             ->addField('password', FormBuilder::PASSWORD, $password_options)
             ->addField('resume', FormBuilder::TEXTAREA, $resume_options)
             ->addField('level', FormBuilder::SELECT, $select_options)
+            ->addField('accept_terms', FormBuilder::CHECKBOX, $checkbox_options)
             ->addField('submit', FormBuilder::SUBMIT, $submit_options)
             ->build()
             ->getForm();

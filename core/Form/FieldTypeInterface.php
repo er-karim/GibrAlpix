@@ -13,7 +13,7 @@ interface FieldTypeInterface
     const PASSWORD = "password";
     const EMAIL = "email";
     const RADIO = "radio";
-    const CHECKBOXE = "checkbox";
+    const CHECKBOX = "checkbox";
     const TEXTAREA = "textarea";
     const SELECT = "select";
     const SUBMIT = "submit";
