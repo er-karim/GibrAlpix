@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\App;
+use App\Core\Form\FieldTypeInterface;
 use App\Core\Form\FormBuilder;
 
 /**
@@ -69,16 +70,16 @@ class DefaultController
 
         $form = $form_builder
             ->open(['method' => 'post', 'action' => 'send'])
-            ->addField('civility', FormBuilder::RADIO, $civility_options_1)
-            ->addField('civility', FormBuilder::RADIO, $civility_options_2)
-            ->addField('firstname', FormBuilder::TEXT, $first_name_options)
-            ->addField('lastname', FormBuilder::TEXT, $last_name_options)
-            ->addField('email', FormBuilder::EMAIL, $email_options)
-            ->addField('password', FormBuilder::PASSWORD, $password_options)
-            ->addField('resume', FormBuilder::TEXTAREA, $resume_options)
-            ->addField('level', FormBuilder::SELECT, $select_options)
-            ->addField('accept_terms', FormBuilder::CHECKBOX, $checkbox_options)
-            ->addField('submit', FormBuilder::SUBMIT, $submit_options)
+            ->addField('civility', FieldTypeInterface::RADIO, $civility_options_1)
+            ->addField('civility', FieldTypeInterface::RADIO, $civility_options_2)
+            ->addField('firstname', FieldTypeInterface::TEXT, $first_name_options)
+            ->addField('lastname', FieldTypeInterface::TEXT, $last_name_options)
+            ->addField('email', FieldTypeInterface::EMAIL, $email_options)
+            ->addField('password', FieldTypeInterface::PASSWORD, $password_options)
+            ->addField('resume', FieldTypeInterface::TEXTAREA, $resume_options)
+            ->addField('level', FieldTypeInterface::SELECT, $select_options)
+            ->addField('accept_terms', FieldTypeInterface::CHECKBOX, $checkbox_options)
+            ->addField('submit', FieldTypeInterface::SUBMIT, $submit_options)
             ->build()
             ->getForm();
 

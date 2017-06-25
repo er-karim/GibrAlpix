@@ -8,7 +8,7 @@ namespace App\Core\Form;
  * @package App\Core\Form
  * @author ERRAK Karim <errakkarim@gmail.com>
  */
-class FormBuilder implements FieldTypeInterface
+class FormBuilder
 {
     protected static $_instance;
 
@@ -59,14 +59,14 @@ class FormBuilder implements FieldTypeInterface
     {
         $this->formContainer .= '<div class="form-group">';
         switch ($field_type) {
-            case static::TEXTAREA:
+            case FieldTypeInterface::TEXTAREA:
                 $this->formContainer .= '<textarea';
                 break;
-            case static::SELECT:
+            case FieldTypeInterface::SELECT:
                 $this->formContainer .= '<select';
                 break;
             default:
-                if ($field_type == static::CHECKBOX || $field_type == static::RADIO) {
+                if ($field_type == FieldTypeInterface::CHECKBOX || $field_type == FieldTypeInterface::RADIO) {
                     $this->formContainer .= sprintf('<div class="%s"><label>', $field_type);
                 }
                 $this->formContainer .= sprintf('<input type="%s"', $field_type);
@@ -106,10 +106,10 @@ class FormBuilder implements FieldTypeInterface
         }
 
         switch ($field_type) {
-            case static::TEXTAREA:
+            case FieldTypeInterface::TEXTAREA:
                 $this->formContainer .= sprintf('>%s</textarea>', $field_value);
                 break;
-            case static::SELECT:
+            case FieldTypeInterface::SELECT:
                 $this->formContainer .= '>';
                 if ($select_options) {
                     foreach ($select_options as $key => $value) {
@@ -120,9 +120,9 @@ class FormBuilder implements FieldTypeInterface
                 $this->formContainer .= '</select>';
                 break;
             default:
-                if ($field_type == static::CHECKBOX) {
+                if ($field_type == FieldTypeInterface::CHECKBOX) {
                     $this->formContainer .= sprintf('>%s</label></div>', $field_label);
-                } elseif ($field_type == static::RADIO) {
+                } elseif ($field_type == FieldTypeInterface::RADIO) {
                     $this->formContainer .= sprintf('value="%s">%s</label></div>', $field_value, $field_label);
                 } else {
                     $this->formContainer .= sprintf('value="%s">', $field_value);
