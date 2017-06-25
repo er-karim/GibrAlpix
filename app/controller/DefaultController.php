@@ -68,7 +68,7 @@ class DefaultController
             'label' => 'J\'ai lu et j\'accepte les conditions générales d\'utilisation.',
         ];
 
-        $form = $form_builder
+        $form_builder
             ->open(['method' => 'post', 'action' => 'send'])
             ->addField('civility', FieldTypeInterface::RADIO, $civility_options_1)
             ->addField('civility', FieldTypeInterface::RADIO, $civility_options_2)
@@ -80,8 +80,9 @@ class DefaultController
             ->addField('level', FieldTypeInterface::SELECT, $select_options)
             ->addField('accept_terms', FieldTypeInterface::CHECKBOX, $checkbox_options)
             ->addField('submit', FieldTypeInterface::SUBMIT, $submit_options)
-            ->build()
-            ->getForm();
+            ->close();
+
+        $form = $form_builder->getForm();
 
         require 'app/views/index.view.php';
     }

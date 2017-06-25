@@ -138,10 +138,9 @@ class FormBuilder
      * close form
      * @return FormBuilder
      */
-    public function build()
+    public function close()
     {
         $this->formContainer .= '</form>';
-        return $this;
     }
 
     public function getForm()
